@@ -1,19 +1,14 @@
 import React from 'react';
 
-import ErrorBoundary from '../error-boundary';
-import { BookstoreProvider } from '../service-context';
-import BookstoreService from '../../services/bookstore-service';
+import withBookstoreService from '../hoc/with-bookstore-service';
 
-const App = () => {
+const App = ({ bookstoreService }) => {
+    console.log(bookstoreService.getBooks());
     return (
-        <ErrorBoundary>
-            <BookstoreProvider value={ new BookstoreService() }>
-                <div>
-                    <h1>App component</h1>
-                </div>
-            </BookstoreProvider>
-        </ErrorBoundary>
+        <div>
+            <h1>App component</h1>
+        </div>
     );
 };
 
-export default App;
+export default withBookstoreService()(App);

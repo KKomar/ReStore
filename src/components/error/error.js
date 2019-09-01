@@ -7,7 +7,7 @@ import './error.css';
 const Error = () => {
     return (
         <div className='error'>
-            <img src={icon} />
+            <img src={icon} alt='error icon' />
             <span>Sorry, something gone wrong</span>
         </div>
     );
