@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 
 import BookListItem from '../book-list-item';
 
-import { withBookstoreService } from '../hoc';
+import { withBookstoreService, compose } from '../hoc';
 import { booksLoaded } from '../../actions';
 
 class BookList extends Component {
@@ -42,4 +42,7 @@ const mapDispatchToProps = {
     booksLoaded
 };
 
-export default withBookstoreService()(connect(mapStateToProps, mapDispatchToProps)(BookList));
+export default compose(
+    withBookstoreService(),
+    connect(mapStateToProps, mapDispatchToProps)
+)(BookList);
