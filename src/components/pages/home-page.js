@@ -1,10 +1,15 @@
 import React from 'react';
 
+import CartTable from '../cart-table';
+
 import BookList from '../book-list';
 
 const HomePage = () => {
     return (
-        <BookList />
+        <React.Fragment>
+            <BookList />
+            <CartTable />
+        </React.Fragment>
     );
 };
 

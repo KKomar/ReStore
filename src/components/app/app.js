@@ -3,7 +3,6 @@ import { Route, Switch } from 'react-router-dom';
 
 import Header from '../header';
 import { HomePage, CartPage } from '../pages';
-import CartTable from '../cart-table';
 
 const App = () => {
     return (
@@ -14,7 +13,6 @@ const App = () => {
                 <Route path='/cart' component={ CartPage } />
                 <Route path='*' render={() => <h1>404 Page not found</h1>} />
             </Switch>
-            <CartTable />
         </main>
     );
 };
