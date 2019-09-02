@@ -6,6 +6,8 @@ import BookListItem from '../book-list-item';
 import { withBookstoreService, compose } from '../hoc';
 import { booksLoaded } from '../../actions';
 
+import './book-list.css';
+
 class BookList extends Component {
     componentDidMount() {
         const { bookstoreService, booksLoaded } = this.props;
@@ -18,7 +20,7 @@ class BookList extends Component {
         const { books } = this.props;
 
         return (
-            <ul>
+            <ul className='book-list'>
                 {
                     books.map(book => {
                         return <li key={ book.id }>
