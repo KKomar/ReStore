@@ -6,18 +6,13 @@ import Spinner from '../spinner';
 import Error from '../error';
 
 import { withBookstoreService, compose } from '../hoc';
-import { booksLoaded, booksRequested, booksError } from '../../actions';
+import { fetchBooks } from '../../actions';
 
 import './book-list.css';
 
 class BookList extends Component {
     componentDidMount() {
-        const { bookstoreService, booksLoaded, booksRequested, booksError } = this.props;
-
-        booksRequested();
-        bookstoreService.getBooks()
-            .then(data => booksLoaded(data))
-            .catch(err => booksError(err));
+        this.props.fetchBooks();
     }
 
     render() {
@@ -49,9 +44,11 @@ const mapStateToProps = ({ books, loading, error }) => {
     return { books, loading, error };
 };
 
-const mapDispatchToProps = {
-    // return bindActionCreators({ booksLoaded }, dispatch);
-    booksLoaded, booksRequested, booksError
+const mapDispatchToProps = (dispatch, ownProps) => {
+    const { bookstoreService } = ownProps;
+    return {
+        fetchBooks: fetchBooks(bookstoreService, dispatch)
+    };
 };
 
 export default compose(
