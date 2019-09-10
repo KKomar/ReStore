@@ -15,7 +15,14 @@ const booksError = error => {
     return {
         type: 'FETCH_BOOKS_FAILURE',
         error
-    }
+    };
+};
+
+export const bookAddedToCart = id => {
+    return {
+        type: 'BOOK_ADDED_TO_CART',
+        id
+    };
 };
 
 export const fetchBooks = (bookstoreService, dispatch) => () => {

@@ -2,12 +2,12 @@ import React from 'react';
 
 import CartTable from '../cart-table';
 
-import BookList from '../book-list';
+import BookListContainer from '../../containers/book-list-container';
 
 const HomePage = () => {
     return (
         <React.Fragment>
-            <BookList />
+            <BookListContainer />
             <CartTable />
         </React.Fragment>
     );
