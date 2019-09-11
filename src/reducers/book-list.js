@@ -1,21 +1,22 @@
-const initialState = {
-    books: [],
-    loading: true,
-    error: null
-};
+const updateBookList = (state, action) => {
+    if (state === undefined) {
+        return {
+            books: [],
+            loading: true,
+            error: null
+        }
+    }
 
-const bookList = (state = initialState, action) => {
     switch (action.type) {
         case 'FETCH_BOOKS_REQUEST':
             return {
-                ...state,
+                books: [],
                 loading: true,
                 error: null
             };
 
         case 'FETCH_BOOKS_SUCCESS':
             return {
-                ...state,
                 books: action.books,
                 loading: false,
                 error: null
@@ -23,14 +24,14 @@ const bookList = (state = initialState, action) => {
 
         case 'FETCH_BOOKS_FAILURE':
             return {
-                ...state,
+                books: [],
                 loading: false,
                 error: action.error
             };
 
         default:
-            return state;
+            return state.bookList;
     }
 };
 
-export default bookList;
+export default updateBookList;

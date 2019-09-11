@@ -55,7 +55,7 @@ const CartTable = ({ items, total, onDecrease, onIncrease, onDelete }) => {
 
                 <tbody>
                     {
-                        items.map(renderRow)
+                        items.length > 0 ? items.map(renderRow) : <tr><td>No orders</td></tr>
                     }
                 </tbody>
             </table>
@@ -71,9 +71,9 @@ const CartTable = ({ items, total, onDecrease, onIncrease, onDelete }) => {
     );
 };
 
-const mapStateToProps = ({ cartItems, totalPrice }) => {
+const mapStateToProps = ({ cart: { items, totalPrice }}) => {
     return {
-        items: cartItems,
+        items,
         total: totalPrice
     }
 };
