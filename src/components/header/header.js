@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { connect } from 'react-redux';
 
 import './header.css';
 
@@ -15,4 +16,11 @@ const Header = ({ items, total }) => {
     );
 };
 
-export default Header;
+const mapStateToProps = ({ cart: { totalPrice, totalCount }}) => {
+    return {
+        items: totalCount,
+        total: totalPrice
+    };
+};
+
+export default connect(mapStateToProps)(Header);

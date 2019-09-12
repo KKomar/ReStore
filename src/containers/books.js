@@ -8,7 +8,7 @@ import Error from '../components/error';
 import { withBookstoreService, compose } from '../components/hoc';
 import { fetchBooks, bookAddedToCart } from '../actions';
 
-class BookListContainer extends Component {
+class Books extends Component {
     componentDidMount() {
         this.props.fetchBooks();
     }
@@ -43,4 +43,4 @@ const mapDispatchToProps = (dispatch, ownProps) => {
 export default compose(
     withBookstoreService(),
     connect(mapStateToProps, mapDispatchToProps)
-)(BookListContainer);
+)(Books);
